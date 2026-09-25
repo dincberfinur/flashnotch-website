@@ -1,7 +1,7 @@
 # FlashNotch website
 
 The landing page (`index.html`) and privacy policy (`privacy.html`) for FlashNotch, served by
-GitHub Pages at https://mtdinc.github.io/flashnotch-website/. Plain static files: no build step.
+GitHub Pages at https://dincberfinur.github.io/flashnotch-website/. Plain static files: no build step.
 
 ## Preview locally
 
