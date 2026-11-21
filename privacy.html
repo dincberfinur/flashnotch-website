@@ -8,18 +8,20 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Schibsted+Grotesk:wght@400;500;600&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif&family=Schibsted+Grotesk:wght@400;500&family=Spline+Sans+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root {
-  --accent:       #ffb340;
-  --bg:           #111013;
-  --text-primary: rgba(244,241,234,0.88);
-  --text-70:      rgba(244,241,234,0.70);
-  --text-55:      rgba(244,241,234,0.55);
-  --fill-subtle:  rgba(244,241,234,0.06);
-  --serif:  "Instrument Serif", Georgia, serif;
-  --sans:   "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
-  --mono:   "Spline Sans Mono", ui-monospace, monospace;
+  --bg:             #12110f;
+  --bg-card:        #1a1816;
+  --text-primary:   #f2ede4;
+  --text-secondary: #b0a89c;
+  --text-muted:     #8c857a;
+  --hairline:       rgba(242, 237, 228, 0.09);
+  --amber:          #f5a623;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans:  "Schibsted Grotesk", -apple-system, BlinkMacSystemFont, sans-serif;
+  --mono:  "Spline Sans Mono", ui-monospace, monospace;
+  --ease:  cubic-bezier(0.22, 1, 0.36, 1);
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 html { background: var(--bg); }
@@ -27,59 +29,66 @@ body {
   background: var(--bg);
   color: var(--text-primary);
   font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.65;
   -webkit-font-smoothing: antialiased;
-  line-height: 1.6;
 }
 .wrap { max-width: 680px; margin: 0 auto; padding: 0 32px; }
 
 nav {
   display: flex; align-items: center; justify-content: space-between;
-  padding: 22px 0; border-bottom: 1px solid rgba(244,241,234,0.08);
+  padding: 20px 0; border-bottom: 1px solid var(--hairline);
 }
 .wordmark {
-  font-family: var(--serif); font-size: 20px;
+  font-family: var(--serif); font-size: 20px; line-height: 1;
   color: var(--text-primary); text-decoration: none;
+  display: inline-flex; align-items: center; gap: 8px;
 }
-.wordmark em { font-style: italic; color: var(--accent); }
-.back { font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em; text-transform: uppercase; color: var(--text-55); text-decoration: none; transition: color 0.15s; }
-.back:hover { color: var(--text-70); }
+.wordmark-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); flex-shrink: 0; }
+.back {
+  font-size: 14px; color: var(--text-secondary); text-decoration: none;
+  transition: color 150ms var(--ease);
+}
+.back:hover { color: var(--text-primary); }
 
 main { padding: 48px 0 80px; }
 
 h1 {
   font-family: var(--serif); font-weight: 400;
-  font-size: 44px; letter-spacing: -0.01em;
-  color: var(--text-primary); margin-bottom: 6px;
+  font-size: 44px; line-height: 1.08; letter-spacing: -0.02em;
+  color: var(--text-primary); margin-bottom: 8px;
 }
-.meta { font-family: var(--mono); font-size: 12px; color: var(--text-55); margin-bottom: 40px; }
+.meta { font-family: var(--mono); font-size: 12px; color: var(--text-muted); margin-bottom: 32px; }
 
-h2 { font-size: 17px; font-weight: 600; color: var(--text-primary); margin: 32px 0 10px; }
+h2 { font-size: 16px; font-weight: 500; color: var(--text-primary); margin: 32px 0 8px; }
 
-p  { font-size: 14px; line-height: 1.75; color: var(--text-70); margin-bottom: 12px; }
+p  { font-size: 15px; line-height: 24px; color: var(--text-secondary); margin-bottom: 12px; }
 
-ul { margin: 0 0 14px 20px; }
-li { font-size: 14px; line-height: 1.75; color: var(--text-70); margin-bottom: 4px; }
+ul { margin: 0 0 16px 20px; }
+li { font-size: 15px; line-height: 24px; color: var(--text-secondary); margin-bottom: 6px; }
+li strong { color: var(--text-primary); font-weight: 500; }
 
 .callout {
-  background: var(--fill-subtle); border-radius: 12px;
-  border-left: 3px solid var(--accent);
-  padding: 18px 20px; margin: 24px 0;
+  background: var(--bg-card); border-radius: 12px;
+  border: 1px solid var(--hairline);
+  border-left: 2px solid var(--amber);
+  padding: 16px 20px; margin: 24px 0;
 }
-.callout p { margin: 0; font-weight: 600; color: var(--text-primary); font-size: 15px; }
+.callout p { margin: 0; font-weight: 500; color: var(--text-primary); font-size: 15px; }
 
-a { color: var(--accent); text-decoration: none; }
-a:hover { text-decoration: underline; }
+a { color: var(--amber); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
 footer {
-  border-top: 1px solid rgba(244,241,234,0.08);
-  padding: 28px 0 40px;
+  border-top: 1px solid var(--hairline);
+  padding: 24px 0 40px;
   display: flex; justify-content: space-between; align-items: center;
-  font-family: var(--mono); font-size: 11px; color: var(--text-55);
+  font-family: var(--mono); font-size: 12px; color: var(--text-muted);
 }
-footer a { color: var(--text-55); text-decoration: none; }
-footer a:hover { color: var(--text-70); }
+footer a { color: var(--text-muted); text-decoration: none; }
+footer a:hover { color: var(--text-primary); }
 
-@media (max-width: 720px) {
+@media (max-width: 640px) {
   .wrap { padding: 0 20px; }
 }
 </style>
@@ -88,7 +97,7 @@ footer a:hover { color: var(--text-70); }
 <div class="wrap">
 
   <nav>
-    <a class="wordmark" href="index.html">Flash<em>Notch</em></a>
+    <a class="wordmark" href="index.html"><span class="wordmark-dot" aria-hidden="true"></span>FlashNotch</a>
     <a class="back" href="index.html">← Back</a>
   </nav>
 
